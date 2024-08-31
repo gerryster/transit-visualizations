@@ -1,6 +1,6 @@
 README-cta-el.md
 
-The station list is available at https://data.cityofchicago.org/Transportation/CTA-System-Information-List-of-L-Stops/8pix-ypme/about_data. It can be joined to the 'L' ridership dataset by joining the station list MAP_ID to the ridership station_id column.
+This explains how to load CTA stop and ridership information into a SQLite database. It uses the following public data sources for [stops](https://data.cityofchicago.org/Transportation/CTA-System-Information-List-of-L-Stops/8pix-ypme/about_data) and [ridership](https://data.cityofchicago.org/Transportation/CTA-Ridership-L-Station-Entries-Daily-Totals/5neh-572f/about_data).  These two sources can be joined to the by using MAP_ID from stops to the station_id column in ridership.
 
 Data import notes:
 
