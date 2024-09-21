@@ -79,7 +79,7 @@ FROM `CTA_-_Ridership_-__L__Station_Entries_-_Daily_Totals_20240713`;
 
 The two counts should be equal.
 
-```
+```sql
 select count(*) from "CTA_-_Ridership_-__L__Station_Entries_-_Daily_Totals_20240713";
 select count(*) from daily_ridership;
 ```
@@ -90,4 +90,30 @@ select count(*) from daily_ridership;
 drop table `CTA_-_Ridership_-__L__Station_Entries_-_Daily_Totals_20240713`;
 ```
 
-12. Optionally optimize the database file now that large tables have been dropped: `VACUUM;`.
+12. Create the stations table from the stops table:
+
+```sql
+CREATE TABLE stations AS
+	SELECT
+		map_id,
+		group_concat(DISTINCT (station_name)) AS name,
+		group_concat(DISTINCT (station_descriptive_name)) AS description,
+		min(ADA) AS ADA,
+		/* consider a station not ADA unless all parts of it are */
+		max(red) AS red,
+		max(blue) AS blue,
+		max(green) AS green,
+		max(brown) AS brown,
+		max(purple) AS purple,
+		max(purple_express) AS purple_express,
+		max(yellow) AS yellow,
+		max(pink) as pink,
+		max(orange) AS orange,
+		group_concat(DISTINCT (LOCATION)) AS LOCATION
+	FROM
+		stops
+	GROUP BY
+		map_id;
+```
+
+13. Optionally optimize the database file now that large tables have been dropped: `VACUUM;`.
