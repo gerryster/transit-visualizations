@@ -1,2 +1,5 @@
-jupyterlab
 duckdb-engine
+jupyterlab
+jupysql
+pandas
+matplotlib
