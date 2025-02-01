@@ -1,10 +1,12 @@
-import Fastify from 'fastify'
 
-const fastify = Fastify({
+import Fastify from 'fastify'
+import type { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
+
+const fastify: FastifyInstance = Fastify({
   logger: true
 })
 
-fastify.get('/', async (request, reply) => {
+fastify.get('/', async (request: FastifyRequest, reply: FastifyReply) => {
   return { hello: 'world' }
 })
 
