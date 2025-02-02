@@ -1,4 +1,6 @@
 
+import ctaDailyRidershipRoutes from './routes/cta/el/daily-ridership.ts'
+
 import Fastify from 'fastify'
 import type { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
 
@@ -10,9 +12,7 @@ fastify.get('/', async (request: FastifyRequest, reply: FastifyReply) => {
   return { hello: 'world' }
 })
 
-fastify.get('/cta/el/daily-ridership', async (request: FastifyRequest, reply: FastifyReply) => {
-  return { total_rides: 43 }
-})
+fastify.register(ctaDailyRidershipRoutes);
 
 /**
  * Run the server!
