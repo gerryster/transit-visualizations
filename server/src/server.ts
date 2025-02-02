@@ -10,6 +10,10 @@ fastify.get('/', async (request: FastifyRequest, reply: FastifyReply) => {
   return { hello: 'world' }
 })
 
+fastify.get('/cta/el/daily-ridership', async (request: FastifyRequest, reply: FastifyReply) => {
+  return { total_rides: 43 }
+})
+
 /**
  * Run the server!
  */
